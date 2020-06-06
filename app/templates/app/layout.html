@@ -1,0 +1,206 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }} </title>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'app/content/bootstrap.css' %}" />
+
+    <script src="{% static 'app/scripts/modernizr-2.6.2.js' %}"></script>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="{% static 'app/scripts/jquery.min.js' %}"></script>
+    <script src="{% static 'app/scripts/modernizr.custom.53451.js' %}"></script>
+    <script src="{% static 'app/scripts/modernizr.custom.js' %}"></script>
+    <script src="{% static 'app/scripts/easing.js' %}"></script>
+    <script src="{% static 'app/scripts/move-top.js' %}"></script>
+    <script src="{% static 'app/scripts/jquery-1.10.2.min.js' %}"></script>
+    <!--theme-style-->
+    <link href="{% static 'app/content/style.css' %}" rel="stylesheet" type="text/css" media="all" />
+    <link href="{% static 'app/content/popuo-box.css' %}" rel="stylesheet" type="text/css" media="all" />
+    <link href="{% static 'app/content/magnific-popup.css' %}" rel="stylesheet" type="text/css" media="all" />
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!--fonts-->
+    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <!--//fonts-->
+     <!--new js-->
+    <script type="text/javascript" src="{% static 'app/scripts/jquery.mixitup.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'app/scripts/jquery.wmuSlider.js' %}"></script> 
+    <script type="text/javascript" src="{% static 'app/scripts/magnific-popup.js' %}"></script>
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    		<script type="text/javascript">
+			jQuery(document).ready(function($) {
+				$(".scroll").click(function(event){		
+					event.preventDefault();
+					$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+				});
+			});
+		</script>
+    		 <!--start-smoth-scrolling-->
+    		<!--start-top-nav-script-->
+		<script>
+			$(function() {
+				var pull 		= $('#pull');
+					menu 		= $('nav ul');
+					menuHeight	= menu.height();
+				$(pull).on('click', function(e) {
+					e.preventDefault();
+					menu.slideToggle();
+				});
+				$(window).resize(function(){
+	        		var w = $(window).width();
+	        		if(w > 320 && menu.is(':hidden')) {
+	        			menu.removeAttr('style');
+	        		}
+	    		});
+			});
+		</script>
+		<!--//End-top-nav-script-->
+    <style>
+        .srch button {
+            background:  url( "{% static 'app/images/search.png' %}") no-repeat 0px -0px;
+        }
+        @media(max-width:768px){
+	.srch button {
+	background: url( "{% static 'app/images/search.png'%}") no-repeat -10px 4px;
+	}
+        @media(max-width:320px){
+	.srch button {
+		background: url( "{% static 'app/images/search.png'%}") no-repeat -18px 7px;
+	}
+    .gallery-box:hover span.rollover1 {
+	background: url( "{% static 'app/images/search.png'%}") center no-repeat rgba(199, 29, 29, 0.73);
+	}
+    </style>
+
+</head>
+
+<body>
+
+		<!-- start-header-->
+			<div id="home" class="header">
+				<div class="container">
+					<div class="top-header">
+						<div class="logo">
+							<a href="{% url 'home'%}"><img src="{% static 'app/images/logo2.png'%}" alt=""></a>
+						</div>
+						<!--start-top-nav-->
+							<!--start-top-nav-->
+						 <nav class="top-nav">
+							<ul class="top-nav">
+						<li><a href="{% url 'home'%}" > Домой </a></li>
+                        <li><a href="{% url 'page'%}" >Блог</a></li>
+						<li><a href="{% url 'about'%}" > О нас </a></li>					
+						<li><a href="{% url 'contact'%}" >Контакты</a></li>
+                        <li><a href="{% url 'video' %}">Видео</a></li> 
+                        {% if not user.is_authenticated %}                        
+                        <li><a href="{% url 'registration' %}">Регистрация</a></li>
+                        {% endif %}
+                        {% if user.is_superuser %}
+                        <li><a href="{% url 'newpost' %}">Создать пост</a></li>
+                        {% endif %}
+                        {% include 'app/loginpartial.html' %}
+									<div class="clearfix"> </div>
+					</ul>
+
+
+							<a href="#" id="pull"><img src="{% static 'app/images/menu-icon.png'%}" title="menu" /></a>
+						</nav>
+                        <div class="clearfix"></div>
+					</div>
+ 					 <div class="main-search">
+				        <form action="search.html">
+				           <input type="text" value="Search" onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = 'Search';}" class="text"/>
+				            <input type="submit" value=""/>
+				        </form>
+		        <div class="close"><img src="{% static 'app/images/cross.png'%}" /></div>
+		    </div>
+		    <div class="srch"><button></button></div>
+            <script type="text/javascript">
+		         $('.main-search').hide();
+		        $('button').click(function (){
+		            $('.main-search').show();
+		            $('.main-search text').focus();
+		        }
+		        );
+		        $('.close').click(function(){
+		            $('.main-search').hide();
+		        });
+		    </script>
+                    <div class="clearfix"></div>
+			<!-- Slideshow 4 -->
+
+{% block content %}{% endblock %}
+        <hr/>
+			<!--/start-footer-->
+						<div class="footer">
+							<div class="container">
+								<div class="footer-content">
+									<div class="col-md-3 footer-grid-copy-right">
+								 		<div class="logo-2">
+											<a href="index.html"><img src="{% static 'app/images/logo.png'%}" alt=""></a>
+										</div>
+										<p> Design by &nbsp;<a href="http://w3layouts.com">W3Layouts</a></p>
+						 			</div>
+									<div class="col-md-3 footer-grid">
+								 		<h3>Информация</h3>
+								 		<ul class="bottom-nav">
+						<li><a href="{% url 'home'%}" > Домой </a></li>
+						<li><a href="{% url 'about'%}" > О нас </a></li>	
+						<li><a href="{% url 'contact'%}" >Контакты</a></li>
+                        <li><a href="{% url 'page'%}" >Блог</a></li>
+												<div class="clearfix"> </div>
+
+										</ul>
+						 			</div>
+						 			<div class="col-md-3 footer-grid">
+								 		<h3>Мой аккаунт</h3>
+								 		<div class="list styled arrow-list3">
+											<ul>
+												<li><a href="account.html">Мой аккаунт</a></li>
+												<li><a href="404.html">Мой комментарии</a></li>
+												<li><a href="cart.html">Мои статьи</a></li>
+											</ul>
+											</div>
+						 			</div>
+
+						 			</div>
+						 			<div class="col-md-3 footer-grid">
+								 		<h3>Контакты</h3>
+											<ul class="soc_icons2">
+											<li><a href="#"><i class="icon_4"></i><span>Facebook</a></span></li>
+											<li><a href="#"><i class="icon_5"></i><span>Twitter</a></span></li>
+											<li><a href="#"><i class="icon_6"></i><span>Вконтакте</a></span></li>
+										</ul>
+
+						 			</div>
+								<div class="clearfix"> </div>
+							</div>				
+					</div>
+					<!--//End-footer-->
+    <a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+    <script type="text/javascript">
+									$(document).ready(function() {
+										/*
+										var defaults = {
+								  			containerID: 'toTop', // fading element id
+											containerHoverID: 'toTopHover', // fading element hover id
+											scrollSpeed: 1200,
+											easingType: 'linear' 
+								 		};
+										*/
+										
+										$().UItoTop({ easingType: 'easeOutQuart' });
+										
+									});
+								</script>
+
+
+    <script src="{% static 'app/scripts/jquery-1.10.2.js' %}"></script>
+    <script src="{% static 'app/scripts/bootstrap.js' %}"></script>
+    <script src="{% static 'app/scripts/respond.js' %}"></script>
+{% block scripts %}{% endblock %}
+{% block css %}{% endblock %}
+</body>
+</html>

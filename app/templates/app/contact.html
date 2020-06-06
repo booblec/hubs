@@ -1,0 +1,102 @@
+﻿{% extends "app/layout.html" %}
+
+{% block content %}
+
+ </div>
+ </div>
+
+			<!--start-contact-->
+	 <div  class="contact" id="contact">
+	 		<div class="contact-head">
+	 			<div class="container">
+						<h3>Свяжитесь с нами!</h3>	
+				</div>
+			</div>
+	<div class="contact-content">
+		<div class="container">
+            {% if form != None %}
+			<div class="col-md-7 contact-left">
+                
+ 				 <div class="form">				
+				  			<form method="post" action="#">
+                                   {% csrf_token %}
+                                  <label for="{{ form.name.id_for_label }}">{{ form.name.label }}:</label>
+                                  {{form.name}}<br />
+                                  <label for="{{ form.gender.id_for_label }}">{{ form.gender.label }}:</label>
+                                  {{form.gender}}<br />
+                                  <label for="{{ form.like.id_for_label }}">{{ form.like.label }}:</label>
+                                  {{form.like}}<br />
+                                  <label for="{{ form.messege.id_for_label }}">{{ form.messege.label }}:</label>
+                                  {{form.messege}}<br />
+                                  <label for="{{ form.news.id_for_label }}">{{ form.news.label }}:</label>
+                                  {{form.news}}<br />
+                                  <label for="{{ form.email.id_for_label }}">{{ form.email.label }}:</label>
+                                  {{form.email}}<br />
+                                  
+							    	
+										<div class="clearfix"> </div>
+								    
+								   <div class="submit"> 
+								    	<input type="submit" value="Submit " />
+					              </div>
+							</form>
+                      {% else %}
+ <div>
+     <h2>{{data.name}}, cпасибо за ваш отзыв!</h2>
+ </div>
+{% endif %}
+						</div>
+ 		</div>	
+ 		<div class="col-md-5 contact-right">		
+             <script> $('#imgr').css('backgroung','../images/hello.jpg')</script>
+			<img id="imgr" src="img/hell.jpg" alt=""></a>
+		</div>	
+ 		
+ 		<div class="clear"> </div>
+ 	</div>	
+</div> 			
+</div>	
+<div class="map">
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3573.8010637774205!2d28.333706158244773!3d57.818406308110376!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46c01ecb43322507%3A0x8cc4b91f55fb4f21!2z0JIuINCYLiDQm9C10L3QuNC9!5e0!3m2!1sru!2sru!4v1590271680663!5m2!1sru!2sru"></iframe>
+</div>
+<!--//End-contact-->
+	<div class="meet">
+		<div class="container">
+			<ul class="footer-list">
+				<li><i class="fa"></i></li>
+				<li><i class="fb"></i></li>
+				<li class="act-s"><i class="fc"></i></li>
+				<li><i class="fd"></i></li>
+				<li><i class="fe"></i></li>
+				<li><i class="ff"></i></li>
+				<li><i class="fg"></i></li>
+				<li><i class="fh"></i></li>
+				<li><i class="fi"></i></li>
+				<li><i class="fj"></i></li>
+				<li><i class="fk"></i></li>
+				<li><i class="fl"></i></li>
+			</ul>
+		</div>
+	</div>
+
+
+{% endblock %}
+
+{% block scripts %}
+
+    {% load staticfiles %}
+            <script type="text/javascript">
+		         $('.main-search').hide();
+		        $('button').click(function (){
+		            $('.main-search').show();
+		            $('.main-search text').focus();
+		        }
+		        );
+		        $('.close').click(function(){
+		            $('.main-search').hide();
+		        });
+		    </script>
+<script type="text/javascript">
+    $('#home').css('backgroung',
+    </script>
+{% endblock %}

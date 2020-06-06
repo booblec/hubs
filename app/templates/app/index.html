@@ -1,0 +1,233 @@
+﻿{% extends "app/layout.html" %}
+
+{% block content %}
+
+			    <div  id="top" class="callbacks_container">
+			      <ul class="rslides" id="slider4">
+			        <li>
+			          <div class="slider-top">
+			          		  <div class="slider-top">
+			          		<h1>В нашем блоге вы найдёте самую свежую информацию 
+                                    о современном топовом железе!</h1>
+							<a class="banner-btn" href="#">Читать</a>
+			          </div>
+			          </div>
+			        </li>
+			        <li>
+			          <div class="slider-top">
+			          		  <div class="slider-top">
+			          		<h1>Последние новости из мира технологий в 
+								нашей специальной рубрике "NewSocet"!</h1>
+							<a class="banner-btn" href="#">Читать</a>
+			          </div>
+			          </div>
+			        </li>
+			        <li>
+			          <div class="slider-top">
+			          		  <div class="slider-top">
+			          		<h1>Обсуждайте это на форуме 
+                                    с такимиже гиками, как и вы!</h1>
+							<a class="banner-btn" href="#">Перейти</a>
+	          				
+			          </div>
+			          </div>
+			        </li>
+			      </ul>
+			    </div>
+			    <div class="clearfix"> </div>
+			</div>
+		</div>
+
+ <!--banner Slider starts Here-->
+        
+        <script>
+            // You can also use "$(window).load(function() {"
+            $(function () {
+                // Slideshow 4
+                $("#slider4").responsiveSlides({
+                    auto: true,
+                    pager: true,
+                    nav: false,
+                    speed: 300,
+                    namespace: "callbacks",
+                    before: function () {
+                        $('.events').append("<li>before event fired.</li>");
+                    },
+                    after: function () {
+                        $('.events').append("<li>after event fired.</li>");
+                    }
+                });
+
+            });            
+        </script>
+        
+        <!--/End-slider-script-->
+        <div class="welcome-section">
+            <div class="container">
+                <div class="welcom-grids">                    
+                    <div  class="col-md-4 welcom-grid-img">
+                        <img src="https://3.bp.blogspot.com/-oI33NgdtFkg/WDeV_lmDhDI/AAAAAAAAAAw/_1Fp064jb4EPmL9DmYYpFmTuLs5uSRmagCLcB/s320/pc-hardware-computer-hd-wallpaper-1920x1200-100941.jpg" title="img" />
+                    </div>
+                    <div class="col-md-4 welcom-grid-text">
+                        <h2>Добро пожаловать!</h2>
+                        <p>
+                             Наш блог создан чтобы рассказывать людям о интересных открытиях и новостях.
+                            Здесь ты найдёшь огромное количество нужной информации, подружишься с людьми,
+                            у которых такие же интересы, как и у тебя, а также просто хорошо проведёшь время.
+
+                        </p>
+                    </div>
+                    <div class="col-md-4 welcom-grid-list">
+                        <h3>Разделы статей</h3>
+                        <div class="list styled arrow-list2">
+                            <ul>
+                                <li><a href="#"><img src="images/ar.png" alt="">Програмное обеспечение</a></li>
+                                <li><a href="#"><img src="images/ar.png" alt="">Ноутбуки</a></li>
+                                <li><a href="#"><img src="images/ar.png" alt="">Процессоры</a></li>
+                                <li><a href="#"><img src="images/ar.png" alt="">ОЗУ и ПЗУ</a></li>
+                                <li><a href="#"><img src="images/ar.png" alt="">Видеокарты</a></li>
+                                <li><a href="#"><img src="images/ar.png" alt="">Разное</a></li>
+                            </ul>
+                        </div>
+
+                    </div>
+                    <div class="clearfix"> </div>
+                </div>
+            </div>
+        </div>
+        <!--/start-Events-->
+        <div class="Event-section">
+            <div class="container">
+                <h3>Новые посты</h3>                
+                <div class="section group">
+                    {% for post in last_pages %} <!--Вывод всех постов-->
+                    <div class="col-md-3 gallery-box">
+                        {% if post.image and post.image.url != '/media/temp.jpg'  %}
+                        <div id="nivo-lightbox-demo"> <p> <a href="{{ post.image.url }}" data-lightbox-gallery="gallery1" id="nivo-lightbox-demo"> <span class="rollover1"> </span></a> </p></div>  	<img src="{{ post.image.url }}" title="img" width="270" height="194" />
+                         {% endif %}
+                        <h4><a href="{% url 'blogpost' parametr=post.id %}">{{post.title}} </a></h4>
+                        <h5>
+                            <lable>  {{post.posted}} </lable>
+                        </h5>
+                            <p>
+                               {{post.description}}
+                            </p>
+                    </div>
+                    {% endfor %}
+                    <div class="clearfix"> </div>                                                       
+                </div>
+                   
+                <script type="text/javascript">
+                    $(document).ready(function () {
+                        $('#nivo-lightbox-demo a').nivoLightbox({ effect: 'fade' });
+                    });
+                </script>
+            </div>
+        </div>
+
+        <!--/start-text-slider-->
+        <div class="testimonials" id="testimonials">
+            <div class="wmuSlider example1">
+                <div class="container-flueid">
+                    <article style="position: absolute; width:64%; opacity: 0;">
+
+                        <div class=" cont span_2_of_3 client-main">
+                            <div class="slide-text">
+                                <p>
+                                    У HP, Microsoft и Apple есть одна общая историческая деталь 
+                                    – все они были созданы в чьем-то гараже
+                                </p>
+                                <span> </span>
+                            </div>
+                            <div class="clearfix"> </div>
+                        </div>
+                    </article>
+                    <article style="position: absolute; width:64%; opacity: 0;">
+                        <div class=" cont span_2_of_3  client-main">
+                            <div class="slide-text">
+                                <p>
+                              Каждый месяц появляется более 5000 компьютерных вирусов
+                                </p>
+                                <span> </span>
+                            </div>
+                            <div class="clearfix"> </div>
+                        </div>
+                    </article>
+                    <article style="position: absolute; width:64%; opacity: 0;">
+                        <div class="cont span_2_of_3  client-main">
+                            <div class="slide-text">
+                                <p>
+                                    Первый электронный компьютер ENIAC весил более 27 тонн и занимал около 167 квадратных метров.
+                                </p>
+                                <span> </span>
+                            </div>
+                            <div class="clearfix"> </div>
+                        </div>
+                    </article>
+
+                    <script>
+                        $('.example1').wmuSlider();
+                    </script>
+                </div>
+            </div>
+        </div>
+        <!--//text-slider-->
+        <!--/start-Events-->
+        <div class="leave-section">
+            <div class="container">
+                <h3>Прежде чем вы уйдёте</h3>
+                <div class="Event-grids">
+                    <div class="col-md-3 leave-grid">
+                        <h4>Какая-то интересная новость о проекте</h4>
+                        <p>
+                            Morbi id felis porttitor tellus viverra
+                            pulvinar. Vestibulum ante ipsum primi
+                            s in faucibus orci luctus et ultrices.
+                            Morbi id felis porttitor tellus viverra
+                            pulvinar. Vestibulum ante ipsum prim
+                            is in faucibus orci luctus et ultrices
+                        </p>
+                    </div>
+                    <div class="col-md-3 leave-grid">
+                        <h4>Предстоящее событие</h4>
+                        <p>
+                            Morbi id felis porttitor tellus viverra
+                            pulvinar. Vestibulum ante ipsum primi
+                            s in faucibus orci luctus et ultrices.
+                            Morbi id felis porttitor tellus viverra
+                            pulvinar. Vestibulum ante ipsum prim
+                            is in faucibus orci luctus et ultrices
+                        </p>
+                    </div>
+                    <div class="col-md-3 leave-grid">
+                        <h4>Какое-то наше достижение</h4>
+                        <p>
+                            Morbi id felis porttitor tellus viverra
+                            pulvinar. Vestibulum ante ipsum primi
+                            s in faucibus orci luctus et ultrices.
+                            Morbi id felis porttitor tellus viverra
+                            pulvinar. Vestibulum ante ipsum prim
+                            is in faucibus orci luctus et ultrices
+                        </p>
+                    </div>
+                    <div class="col-md-3 leave-grid">
+                        <h4> Список самых активных участников </h4>
+                        <p>
+                            Morbi id felis porttitor tellus viverra
+                            pulvinar. Vestibulum ante ipsum primi
+                            s in faucibus orci luctus et ultrices.
+                            Morbi id felis porttitor tellus viverra
+                            pulvinar. Vestibulum ante ipsum prim
+                            is in faucibus orci luctus et ultrices
+                        </p>
+                    </div>
+                    <div class="clearfix"> </div>
+                </div>
+            </div>
+        </div>
+{% block scripts %}
+    {% load staticfiles %}
+<script type="text/javascript" src="{% static 'app/scripts/nivo-lightbox.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'app/scripts/responsiveslides.min.js' %}"></script>
+{% endblock %}
+{% endblock %}
